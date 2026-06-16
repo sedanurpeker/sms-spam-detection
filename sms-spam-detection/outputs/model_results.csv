@@ -1,0 +1,7 @@
+,Accuracy,Precision,Recall,F1,AUC
+Naive Bayes,97.13,100.0,78.52,87.97,98.2
+Logistic Regression,97.58,96.21,85.23,90.39,98.94
+Linear SVM,99.01,97.26,95.3,96.27,99.3
+Random Forest,98.21,100.0,86.58,92.81,99.11
+BiGRU,98.74,97.87,92.62,95.17,98.79
+BiGRU + Attention,97.58,92.96,88.59,90.72,97.57

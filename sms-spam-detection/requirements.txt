@@ -1,0 +1,11 @@
+# SMS Spam Tespiti — Python bagimliliklari
+# Kanonik sonuclarin uretildigi surumler (test edilmis):
+tensorflow-cpu==2.21.0
+scikit-learn==1.8.0
+pandas==3.0.2
+numpy==2.4.4
+matplotlib==3.10.8
+
+# Not: GPU kullanmak isterseniz 'tensorflow-cpu' yerine 'tensorflow' kurabilirsiniz.
+# Derin ogrenme sonuclarinin birebir yeniden uretilmesi icin ayni TensorFlow
+# surumu ve CPU ortami onerilir (TF_ENABLE_ONEDNN_OPTS=0 config.py icinde ayarlidir).
