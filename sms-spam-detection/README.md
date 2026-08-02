@@ -1,94 +1,216 @@
-# SMS Spam Detection — Machine Learning and Deep Learning
+# 📱 SMS Spam Detection using Machine Learning and Deep Learning
 
-This repository contains the source code that produces all results, tables, and figures presented in the academic paper **"Detection of SMS Spam Messages Using Machine Learning and Deep Learning Methods"**. Four classical machine learning models and two deep learning models are comparatively evaluated on the UCI SMS Spam Collection dataset.
+[![Python](https://img.shields.io/badge/Python-3.12.6-blue.svg)](https://www.python.org/)
+[![Scikit--learn](https://img.shields.io/badge/Scikit--learn-ML-orange.svg)](https://scikit-learn.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-DeepLearning-ff6f00.svg)](https://www.tensorflow.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](#)
 
-> **Purpose:** Not to generate new results, but to provide reproducible source code that reliably re-produces the **canonical results** reported in the paper. Seeds and hyperparameters are fixed in `src/config.py`.
+A comparative study of **traditional machine learning** and **deep learning** approaches for automatically classifying SMS messages as **Spam** or **Ham (Legitimate)**, using Natural Language Processing (NLP) and supervised learning.
+
+Six classification models were implemented and evaluated on the SMS Spam Collection Dataset, compared across Accuracy, Precision, Recall, F1-Score, and ROC-AUC.
 
 ---
 
-## 1. Folder Structure
+## 📑 Table of Contents
 
-```
-sms-spam-detection/
-├── README.md                  This file
-├── requirements.txt           Python dependencies
-├── data/
-│   ├── SMSSpamCollection      UCI dataset (5,572 messages)
-│   └── UCI_readme.txt         Original dataset description
-├── src/
-│   ├── config.py              Seeds, paths, hyperparameters
-│   ├── data_loader.py         Data loading + EDA statistics
-│   ├── preprocessing.py       Text cleaning, TF-IDF, tokenization
-│   ├── models.py              6 models + Attention layer
-│   ├── evaluate.py            Metrics (Accuracy/Precision/Recall/F1/AUC)
-│   ├── figures.py             Code that produces all 7 figures
-│   └── main.py                End-to-end execution
-└── outputs/
-    ├── model_results.csv      Results table (Table 5)
-    └── figures/               Figures 1–7 (PNG)
-```
+- [Overview](#-overview)
+- [Dataset](#-dataset)
+- [Project Objectives](#-project-objectives)
+- [Methodology](#-methodology)
+- [Results](#-experimental-results)
+- [Key Findings](#-key-findings)
+- [Technologies Used](#-technologies-used)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Evaluation Metrics](#-evaluation-metrics)
+- [Research Contribution](#-research-contribution)
+- [Author](#-author)
 
-## 2. Installation
+---
 
-```bash
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
+## 🧩 Overview
 
-## 3. Running
+This project presents a comparative analysis of traditional machine learning and deep learning approaches for SMS spam detection. The objective is to automatically classify SMS messages as either **Spam** or **Ham (Legitimate)** using NLP techniques and supervised learning models.
 
-```bash
-cd src
-python main.py
-```
+---
 
-Upon completion, `outputs/model_results.csv` and the seven PNGs under `outputs/figures/` are re-produced. Total runtime on a single CPU is approximately 1–3 minutes (classical models finish within seconds; deep learning models run for a few epochs with early stopping).
+## 📊 Dataset
 
-## 4. Dataset
+The project utilizes the **SMS Spam Collection Dataset**, a publicly available benchmark dataset for SMS spam classification.
 
-UCI Machine Learning Repository — SMS Spam Collection  
-<https://archive.ics.uci.edu/dataset/228/sms+spam+collection>
+### Dataset Statistics
 
-- Total **5,572** messages: **4,825 ham** (86.6%), **747 spam** (13.4%)
-- Format: each line `<label>\t<message>`
+| Class | Count |
+|---|---|
+| Ham (Legitimate) | 4,825 |
+| Spam | 747 |
+| **Total** | **5,572** |
 
-## 5. Canonical Results (Table 5)
+**Source:** SMS Spam Collection Dataset — Almeida et al. (2011), UCI Machine Learning Repository
 
-| Model | Accuracy | Precision | Recall | F1 | AUC |
+---
+
+## 🎯 Project Objectives
+
+- Detect spam SMS messages automatically
+- Compare traditional machine learning algorithms with deep learning architectures
+- Evaluate model performance using multiple classification metrics
+- Identify the most effective approach for SMS spam detection
+
+---
+
+## 🛠 Methodology
+
+### Data Preprocessing
+
+The following preprocessing steps were applied to the SMS messages:
+
+- Text cleaning
+- Lowercase conversion
+- Removal of punctuation and special characters
+- Tokenization
+- Stopword processing
+- TF-IDF feature extraction *(for machine learning models)*
+- Sequence tokenization and padding *(for deep learning models)*
+
+### Implemented Models
+
+**Traditional Machine Learning Models**
+- Naive Bayes
+- Logistic Regression
+- Linear Support Vector Machine (SVM)
+- Random Forest
+
+**Deep Learning Models**
+- Bidirectional Gated Recurrent Unit (BiGRU)
+- BiGRU with Attention Mechanism
+
+---
+
+## 📈 Experimental Results
+
+| Model | Accuracy (%) | Precision (%) | Recall (%) | F1-Score (%) | ROC-AUC (%) |
 |---|---|---|---|---|---|
 | Naive Bayes | 97.13 | 100.00 | 78.52 | 87.97 | 98.20 |
 | Logistic Regression | 97.58 | 96.21 | 85.23 | 90.39 | 98.94 |
 | **Linear SVM** | **99.01** | 97.26 | **95.30** | **96.27** | **99.30** |
 | Random Forest | 98.21 | 100.00 | 86.58 | 92.81 | 99.11 |
-| BiGRU | 98.74 | 97.20 | 93.29 | 95.21 | 98.58 |
-| BiGRU + Attention | 97.40 | 92.86 | 87.25 | 89.97 | 97.62 |
+| BiGRU | 98.74 | 97.87 | 92.62 | 95.17 | 98.79 |
+| BiGRU + Attention | 97.58 | 92.96 | 88.59 | 90.72 | 97.57 |
 
-## 6. Code ↔ Figure/Table Mapping
+---
 
-| Output | Produced by | Paper section |
-|---|---|---|
-| Table 5 — `model_results.csv` | `main.py` → `evaluate.py` | Section 7 |
-| Figure 1 — Class distribution | `figures.fig_class_distribution()` | Section 3 |
-| Figure 2 — Message length | `figures.fig_message_length()` | Section 3 |
-| Figure 3 — Word count | `figures.fig_word_count()` | Section 3 |
-| Figure 4 — Model comparison | `figures.fig_model_comparison()` | Section 7 |
-| Figure 5 — Confusion Matrix | `figures.fig_confusion_matrices()` | Section 7 |
-| Figure 6 — ROC curves | `figures.fig_roc_curves()` | Section 7 |
-| Figure 7 — Training curves | `figures.fig_training_curves()` | Section 8 |
+## 🔑 Key Findings
 
-EDA statistics (Table 1) are documented in `data_loader.dataset_statistics()`, preprocessing steps (Table 3) in `preprocessing.clean_text()`, and hyperparameters (Table 4) in `config.py`.
+- 🏆 **Linear SVM** achieved the highest overall performance, with an **F1-Score of 96.27%** and a **ROC-AUC of 99.30%**.
+- 🧠 **BiGRU** achieved the best performance among deep learning models, with an F1-Score of 95.17%.
+- ⚖️ Traditional machine learning models demonstrated highly competitive results compared to deep learning architectures.
+- 📌 Well-optimized machine learning models remain highly effective for text classification tasks involving moderate-sized datasets.
 
-## 7. Models
+---
 
-**Classical (TF-IDF + scikit-learn):** Naive Bayes (MultinomialNB), Logistic Regression, Linear SVM (LinearSVC + CalibratedClassifierCV for probability/AUC), Random Forest.
+## 💻 Technologies Used
 
-**Deep learning (Keras):** BiGRU; BiGRU + Attention (additive/Bahdanau-style attention layer).
+**Programming Language**
+- Python 3.12.6
 
-## 8. Reproducibility Note
+**Libraries & Frameworks**
+- Scikit-learn
+- TensorFlow
+- Keras
+- NumPy
+- Pandas
+- Matplotlib
+- Seaborn
+- NLTK
 
-**Classical models** (Naive Bayes, Logistic Regression, Linear SVM, Random Forest with `random_state=42`) are bit-for-bit deterministic: every run of `main.py`, in any environment, will reproduce the values in Table 5 **exactly**.
+**Development Environment**
+- Jupyter Notebook
+- Visual Studio Code
 
-**Deep learning models** (BiGRU, BiGRU + Attention) are seeded with `tf.random.set_seed(42)`; however, because TensorFlow's multi-threaded CPU operations are not fully deterministic, the metrics for these two models may vary by **up to ~1 F1 point** across runs and environments (e.g. BiGRU F1 ≈ 95.2; BiGRU + Attention F1 ≈ 90). This is a known and expected characteristic of deep learning experiments. What matters is that the **qualitative conclusion remains unchanged**: in every run, Linear SVM is the best-performing model, and the attention mechanism underperforms standard BiGRU on short SMS texts.
+---
 
-The canonical values reported in the paper are fixed in `outputs/model_results.csv` and the accompanying figures submitted with it. To reproduce the deep learning results as closely as possible, it is recommended to use the same TensorFlow version (2.21.0) and a CPU-only environment.
+## 📁 Project Structure
+
+```
+sms-spam-detection/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│
+├── models/
+│
+├── outputs/
+│   ├── figures/
+│   ├── confusion_matrices/
+│   └── results/
+│
+├── src/
+│
+├── requirements.txt
+├── README.md
+└── main.py
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/edanurpeker/sms-spam-detection.git
+cd sms-spam-detection
+```
+
+Install required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Usage
+
+Run the project:
+
+```bash
+python main.py
+```
+
+Or open and execute the provided Jupyter notebooks for model training, evaluation, and visualization.
+
+---
+
+## 📏 Evaluation Metrics
+
+The following metrics were used to evaluate model performance:
+
+- Accuracy
+- Precision
+- Recall
+- F1-Score
+- ROC-AUC
+
+These metrics provide a comprehensive assessment of classification effectiveness, particularly for imbalanced datasets such as spam detection tasks.
+
+---
+
+## 🔬 Research Contribution
+
+This study provides a comparative evaluation of machine learning and deep learning methods for SMS spam classification and demonstrates the effectiveness of both approaches on a widely used benchmark dataset.
+
+The project was developed as part of an academic research study in the field of Machine Learning and Natural Language Processing.
+
+---
+
+## 👩‍💻 Author
+
+**Sedanur Peker**
+Computer Engineering
+Sakarya University of Applied Sciences
