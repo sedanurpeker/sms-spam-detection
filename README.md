@@ -1,4 +1,4 @@
-# 📱 SMS Spam Detection using Machine Learning and Deep Learning
+#  SMS Spam Detection using Machine Learning and Deep Learning
 
 [![Python](https://img.shields.io/badge/Python-3.12.6-blue.svg)](https://www.python.org/)
 [![Scikit--learn](https://img.shields.io/badge/Scikit--learn-ML-orange.svg)](https://scikit-learn.org/)
@@ -11,7 +11,7 @@ Six classification models were implemented and evaluated on the SMS Spam Collect
 
 ---
 
-## 📑 Table of Contents
+##  Table of Contents
 
 - [Overview](#-overview)
 - [Dataset](#-dataset)
@@ -29,13 +29,13 @@ Six classification models were implemented and evaluated on the SMS Spam Collect
 
 ---
 
-## 🧩 Overview
+##  Overview
 
 This project presents a comparative analysis of traditional machine learning and deep learning approaches for SMS spam detection. The objective is to automatically classify SMS messages as either **Spam** or **Ham (Legitimate)** using NLP techniques and supervised learning models.
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 The project utilizes the **SMS Spam Collection Dataset**, a publicly available benchmark dataset for SMS spam classification.
 
@@ -51,7 +51,7 @@ The project utilizes the **SMS Spam Collection Dataset**, a publicly available b
 
 ---
 
-## 🎯 Project Objectives
+##  Project Objectives
 
 - Detect spam SMS messages automatically
 - Compare traditional machine learning algorithms with deep learning architectures
@@ -60,7 +60,7 @@ The project utilizes the **SMS Spam Collection Dataset**, a publicly available b
 
 ---
 
-## 🛠 Methodology
+##  Methodology
 
 ### Data Preprocessing
 
@@ -88,7 +88,7 @@ The following preprocessing steps were applied to the SMS messages:
 
 ---
 
-## 📈 Experimental Results
+##  Experimental Results
 
 | Model | Accuracy (%) | Precision (%) | Recall (%) | F1-Score (%) | ROC-AUC (%) |
 |---|---|---|---|---|---|
@@ -101,16 +101,16 @@ The following preprocessing steps were applied to the SMS messages:
 
 ---
 
-## 🔑 Key Findings
+##  Key Findings
 
-- 🏆 **Linear SVM** achieved the highest overall performance, with an **F1-Score of 96.27%** and a **ROC-AUC of 99.30%**.
-- 🧠 **BiGRU** achieved the best performance among deep learning models, with an F1-Score of 95.17%.
-- ⚖️ Traditional machine learning models demonstrated highly competitive results compared to deep learning architectures.
-- 📌 Well-optimized machine learning models remain highly effective for text classification tasks involving moderate-sized datasets.
+-  **Linear SVM** achieved the highest overall performance, with an **F1-Score of 96.27%** and a **ROC-AUC of 99.30%**.
+-  **BiGRU** achieved the best performance among deep learning models, with an F1-Score of 95.17%.
+-  Traditional machine learning models demonstrated highly competitive results compared to deep learning architectures.
+-  Well-optimized machine learning models remain highly effective for text classification tasks involving moderate-sized datasets.
 
 ---
 
-## 💻 Technologies Used
+##  Technologies Used
 
 **Programming Language**
 - Python 3.12.6
@@ -131,7 +131,7 @@ The following preprocessing steps were applied to the SMS messages:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 sms-spam-detection/
@@ -158,7 +158,7 @@ sms-spam-detection/
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 Clone the repository:
 
@@ -175,7 +175,7 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Usage
+##  Usage
 
 Run the project:
 
@@ -187,7 +187,7 @@ Or open and execute the provided Jupyter notebooks for model training, evaluatio
 
 ---
 
-## 📏 Evaluation Metrics
+##  Evaluation Metrics
 
 The following metrics were used to evaluate model performance:
 
@@ -201,7 +201,7 @@ These metrics provide a comprehensive assessment of classification effectiveness
 
 ---
 
-## 🔬 Research Contribution
+##  Research Contribution
 
 This study provides a comparative evaluation of machine learning and deep learning methods for SMS spam classification and demonstrates the effectiveness of both approaches on a widely used benchmark dataset.
 
@@ -209,7 +209,7 @@ The project was developed as part of an academic research study in the field of 
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 **Sedanur Peker**
 Computer Engineering
